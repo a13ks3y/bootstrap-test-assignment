@@ -1,0 +1,109 @@
+html, body {
+    font-family: 'Commissioner', serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+
+    /* Dark */
+
+    /* color: #292929; */
+}
+
+header.container, main.container {
+    width: 859px;
+}
+
+.navbar-brand {
+    font-size: 12px;
+}
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link, .nav-link {
+    font-size: 12px;
+}
+
+.bg-dark,
+.bg-dark .navbar-brand,
+.bg-dark .navbar-toggler
+ {
+    color: white!important;
+}
+
+.filter {
+    list-style: none;
+}
+.filter li button {
+    width: 273px;
+}
+.aside-nav-item.active a {
+    color: white;
+}
+.aside-nav-item.active {
+    background-color: #ED7135;
+}
+.aside-nav-item {
+    display: flex;
+    width: 202px;
+    height: 30px;
+    padding-left: 11px;
+    padding-top: 7px;
+     padding-bottom: 8px;
+    border-radius: 8px;
+}
+.aside-nav-item a {
+    text-decoration: none;
+    color: #666;
+}
+.aside-nav-item:before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.aside-nav-item-photos:before { background-image: url('icons/photos.svg'); }
+.aside-nav-item-selfies:before { background-image: url('icons/selfies.svg'); }
+.aside-nav-item-recent:before { background-image: url('icons/recent.svg'); }
+.aside-nav-item-deleted:before { background-image: url('icons/deleted.svg'); }
+
+.nav-link.active {
+    border-bottom: 2px solid #ED7135;
+}
+
+main.container {
+    /*max-width: 807px;*/
+    margin-top: 39px;
+}
+
+
+label {
+    /*display: grid;*/
+    /*grid-template: 1fr / auto 1fr;*/
+    /*gap: 8px;*/
+    display: flex;
+    align-items: center;
+    border-radius: 666px;
+    padding-left: 16px;
+    border: 1px solid #eee;
+     background: #eee;
+    line-height: 39px;
+    color: #6C757D;
+    cursor: text;
+}
+
+/* SEARCH. TODO: add specific class! */
+
+label:focus-within {
+    border: 1px solid #000;
+}
+
+label>input {
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+    border-radius: 666px;
+    padding-left: 12px;
+}
