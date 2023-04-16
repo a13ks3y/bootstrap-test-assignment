@@ -12,7 +12,7 @@ html, body {
 }
 
 header.container, main.container {
-    width: 859px;
+    /*width: 859px;*/
 }
 
 .navbar-brand {
@@ -24,13 +24,15 @@ header.container, main.container {
 
 .bg-dark,
 .bg-dark .navbar-brand,
-.bg-dark .navbar-toggler
+.bg-dark .navbar-toggler,
+.bg-dark .nav-link
  {
     color: white!important;
 }
 
 .filter {
     list-style: none;
+    display: flex;
 }
 .filter li button {
     width: 273px;
@@ -38,6 +40,10 @@ header.container, main.container {
 .aside-nav-item.active a {
     color: white;
 }
+.bg-dark .aside-nav-item a {
+    color: #eee;
+}
+
 .aside-nav-item.active {
     background-color: #ED7135;
 }
@@ -46,9 +52,9 @@ header.container, main.container {
     width: 202px;
     height: 30px;
     padding-left: 11px;
-    padding-top: 7px;
-     padding-bottom: 8px;
     border-radius: 8px;
+    line-height: 30px;
+    vertical-align: middle;
 }
 .aside-nav-item a {
     text-decoration: none;
@@ -56,12 +62,17 @@ header.container, main.container {
 }
 .aside-nav-item:before {
     content: '';
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
+    margin-right: 11px;
+    line-height: 14px;
+    font-size: 14px;
+    margin-top: 8px;
 }
 .aside-nav-item-photos:before { background-image: url('icons/photos.svg'); }
 .aside-nav-item-selfies:before { background-image: url('icons/selfies.svg'); }
@@ -88,7 +99,7 @@ label {
     padding-left: 16px;
     border: 1px solid #eee;
      background: #eee;
-    line-height: 39px;
+    line-height: 24px;
     color: #6C757D;
     cursor: text;
 }
@@ -106,4 +117,32 @@ label>input {
     width: 100%;
     border-radius: 666px;
     padding-left: 12px;
+}
+
+article {
+    /* TODO: Dark Mode! */
+    background: var(--bs-backdrop-bg);
+    border: 1px solid #EBEBEB;
+    border-radius: 8px;
+    width: 356px;
+     /*height: 428px; */
+    padding: 1rem;
+    min-width: calc(360px + 2rem);
+}
+article h2 {
+    margin-top: 1rem;
+}
+
+.photos-container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 999px) {
+    .photos-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .filter {
+        flex-direction: column;
+    }
 }
