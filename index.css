@@ -55,6 +55,7 @@ header.container, main.container {
     border-radius: 8px;
     line-height: 30px;
     vertical-align: middle;
+    cursor: pointer;
 }
 .aside-nav-item a {
     text-decoration: none;
@@ -134,9 +135,10 @@ article h2 {
 }
 
 .photos-container {
-    margin: auto;
+    padding-top: 1rem;
     display: grid;
     grid-template-columns: 1fr;
+    row-gap: 2rem;
 }
 @media (min-width: 999px) {
     .photos-container {
