@@ -60,6 +60,7 @@ function renderCard(card, cardIndex, cards) {
     articleEl.appendChild(pEl);
 
     const btnsContainerEl = document.createElement('div');
+        btnsContainerEl.classList.add('card-btns-container')
         const btnSaveEl = document.createElement('button');
         const btnShareEl = document.createElement('button');
         btnSaveEl.textContent = 'Save to collection';

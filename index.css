@@ -75,10 +75,11 @@ header.container, main.container {
     font-size: 14px;
     margin-top: 8px;
 }
-.aside-nav-item-photos:before { background-image: url('icons/photos.svg'); }
-.aside-nav-item-selfies:before { background-image: url('icons/selfies.svg'); }
-.aside-nav-item-recent:before { background-image: url('icons/recent.svg'); }
-.aside-nav-item-deleted:before { background-image: url('icons/deleted.svg'); }
+.aside-nav-item-photos.active:before { background-image: url('icons/photos.svg'); }
+.aside-nav-item-photos:before { background-image: url('icons/photos-dark.svg'); }
+.aside-nav-item-selfies:before { background-image: url('icons/selfies-dark.svg'); }
+.aside-nav-item-recent:before { background-image: url('icons/recent-dark.svg'); }
+.aside-nav-item-deleted:before { background-image: url('icons/deleted-dark.svg'); }
 
 .nav-link.active {
     border-bottom: 2px solid #ED7135;
@@ -127,11 +128,27 @@ article {
     border-radius: 8px;
     width: 356px;
      /*height: 428px; */
-    padding: 1rem;
     min-width: calc(360px + 2rem);
 }
-article h2 {
+article img {
+    display: block;
+    margin: auto;
+}
+article h3 {
     margin-top: 1rem;
+    padding: 0 1rem;
+}
+
+article p {
+    padding: 0 1rem;
+}
+
+.card-btns-container {
+    border-top: 1px solid #EBEBEB;
+    padding: 16px;
+}
+.card-btns-container .btn {
+    margin-right: 16px;
 }
 
 .photos-container {
@@ -140,7 +157,7 @@ article h2 {
     grid-template-columns: 1fr;
     row-gap: 2rem;
 }
-@media (min-width: 999px) {
+@media (min-width: 666px) {
     .photos-container {
         grid-template-columns: 1fr 1fr;
     }
