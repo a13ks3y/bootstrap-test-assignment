@@ -86,8 +86,25 @@ header.container, main.container {
 }
 
 main.container {
-    /*max-width: 807px;*/
+    /* max-width: 807px; */
     margin-top: 39px;
+}
+
+#btn-toggle-mode {
+    /*margin-top: -3.5rem;*/
+    position: fixed;
+    right: 3rem;
+    top: 6rem;
+    display: inline-block;
+    background-position: center center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    background-image: url("icons/lightbulb-off.svg");
+    cursor: pointer;
+}
+.bg-dark #btn-toggle-mode {
+    background-image: url("icons/lightbulb.svg");
 }
 
 
@@ -121,25 +138,24 @@ label>input {
     padding-left: 12px;
 }
 
-article {
+.card {
     /* TODO: Dark Mode! */
     background: var(--bs-backdrop-bg);
     border: 1px solid #EBEBEB;
-    border-radius: 8px;
     width: 356px;
-     /*height: 428px; */
     min-width: calc(360px + 2rem);
 }
-article img {
-    display: block;
-    margin: auto;
+.card img {
+    /*border-top-left-radius: 8px;*/
+    /*border-top-right-radius: 8px;*/
+    max-height: 200px;
 }
-article h3 {
+.card h3 {
     margin-top: 1rem;
     padding: 0 1rem;
 }
 
-article p {
+.card p {
     padding: 0 1rem;
 }
 
@@ -156,6 +172,14 @@ article p {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 2rem;
+}
+.card-text {
+    overflow: hidden;
+}
+.cut-off {
+    white-space: nowrap;
+    /*max-height: 3rem;*/
+    text-overflow: ellipsis;
 }
 @media (min-width: 666px) {
     .photos-container {

@@ -11,7 +11,7 @@ There is a page layout with a header and a list of picture cards. It should be m
 - JS framework at your discretion (or without a framework at all, and using vanilla JS is even better)
 - upload the finished layout to GitHub and host it on GitHub Pages so that you can immediately see the demo and code
 ## Tasks with an asterisk (optional):
-- ~~implement dark theme~~
+- implement dark theme
 - make an infinite scroll for cards that takes data from the address https://picsum.photos/v2/list?page=1&limit=9
 
 
