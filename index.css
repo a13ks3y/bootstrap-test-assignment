@@ -11,8 +11,12 @@ html, body {
     /* color: #292929; */
 }
 
-header.container, main.container {
-    /*width: 859px;*/
+.bg-dark .navbar-toggler {
+    border-color: #eee;
+}
+
+.bg-dark .navbar-toggler-icon {
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .navbar-brand {
@@ -86,7 +90,7 @@ header.container, main.container {
 }
 
 main.container {
-    /* max-width: 807px; */
+     /*max-width: 1600px;*/
     margin-top: 39px;
 }
 
@@ -182,11 +186,22 @@ label>input {
     /*max-height: 3rem;*/
     text-overflow: ellipsis;
 }
+.photos-container .card img {
+    max-width: 200px;
+    max-height: none;
+}
 @media (min-width: 666px) {
     .photos-container {
         grid-template-columns: 1fr 1fr;
     }
     .filter {
         flex-direction: column;
+    }
+    header.container, main.container {
+        width: 1600px; /* @todo: ??? */
+    }
+    .photos-container .card img {
+        max-width: 382px;
+        max-height: 200px;
     }
 }
