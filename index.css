@@ -3,13 +3,28 @@ html, body {
     font-style: normal;
     font-size: 12px;
     line-height: 150%;
-    /* identical to box height, or 24px */
-
-
-    /* Dark */
-
-    /* color: #292929; */
 }
+
+body::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #EBEBEB;
+}
+
+body::-webkit-scrollbar-thumb
+{
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #ccc;
+}
+body.bg-dark::-webkit-scrollbar-thumb { background-color: #555; }
 
 .bg-dark .navbar-toggler {
     border-color: #eee;
@@ -20,11 +35,11 @@ html, body {
 }
 
 .navbar-brand {
-    font-size: 24px;
+    font-size: 2rem;
     padding-left: 1rem;
 }
 .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link, .nav-link {
-    font-size: 12px;
+    font-size: 1rem;
 }
 
 .bg-dark,
@@ -93,7 +108,7 @@ html, body {
 
 main.container {
      /*max-width: 1600px;*/
-    margin-top: 39px;
+    margin-top: 3.2rem;
 }
 
 #btn-toggle-mode {
@@ -121,7 +136,7 @@ label {
     display: flex;
     align-items: center;
     border-radius: 666px;
-    padding-left: 16px;
+    padding-left: 1.333rem;
     border: 1px solid #eee;
      background: #eee;
     line-height: 24px;
@@ -141,7 +156,7 @@ label>input {
     background: transparent;
     width: 100%;
     border-radius: 666px;
-    padding-left: 12px;
+    padding-left: 1rem;
 }
 
 .card {
@@ -166,10 +181,10 @@ label>input {
 
 .card-btns-container {
     border-top: 1px solid #EBEBEB;
-    padding: 16px;
+    padding: 1.333rem;
 }
 .card-btns-container .btn {
-    margin-right: 16px;
+    margin-right: 1.333rem;
 }
 
 .photos-container {
@@ -211,6 +226,6 @@ header.container, main.container {
         max-height: 200px;
     }
     .navbar-brand {
-        font-size: 12px;
+        font-size: 1rem;
     }
 }
