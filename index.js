@@ -1,15 +1,20 @@
 let lastCardEl = null;
-const photosContainerEl = document.querySelector('.photos-container');
+let currentPage = 1;
+let loading = false;
 
-// Switch dark/light mode and store it.
+const LIMIT = 9;
 const STORAGE_KEY = 'theme-mode';
 const DEFAULT_MODE = 'light';
+
+const photosContainerEl = document.querySelector('.photos-container');
+const spinner = document.getElementById('spinner');
 
 main();
 
 function main() {
     const currentMode = loadCurrentMode();
     if (currentMode !== DEFAULT_MODE) changeMode(currentMode);
+    loadCards();
 }
 
 function toggleMode() {
@@ -37,18 +42,13 @@ function changeMode(nextMode) {
 
 }
 
-
-let currentPage = 1;
-const LIMIT = 9;
-
 function showSpinner() {
-    // @todo: implement showSpinner function
+    spinner.classList.remove('visually-hidden');
 }
 
 function hideSpinner() {
-    // @todo: implement hideSpinner function
+    spinner.classList.add('visually-hidden');
 }
-
 
 function createNode(tagName, attrs, parent = null) {
     const el = document.createElement(tagName);
@@ -67,7 +67,7 @@ const btnToggleMode = document.getElementById('btn-toggle-mode');
 btnToggleMode.addEventListener('click', e => toggleMode());
 
 function renderCard(card, cardIndex, cards) {
-    const articleEl = createNode('div', {
+    const cardEl = createNode('div', {
         className: 'card',
         "data-id": card.id
     });
@@ -78,7 +78,7 @@ function renderCard(card, cardIndex, cards) {
         src: card["download_url"],
         alt: card["author"],
         className: 'card-img-top'
-    }, articleEl);
+    }, cardEl);
 
     createNode('h3', {textContent: card["author"]}, cardBodyEl);
 
@@ -99,20 +99,19 @@ function renderCard(card, cardIndex, cards) {
     }
 
 
-    articleEl.appendChild(cardBodyEl);
-    const btnsContainerEl = createNode('div', {className: 'card-btns-container'}, articleEl);
+    cardEl.appendChild(cardBodyEl);
+    const btnsContainerEl = createNode('div', {className: 'card-btns-container'}, cardEl);
     createNode('button', {className: 'btn btn-warning', textContent: 'Save to collection'}, btnsContainerEl);
     createNode('button', {className: 'btn btn-light', textContent: 'Share'}, btnsContainerEl);
 
     if (cardIndex === cards.length - 1) {
-        lastCardEl = articleEl;
+        lastCardEl = cardEl;
     }
-    photosContainerEl.appendChild(articleEl);
+    photosContainerEl.appendChild(cardEl);
 }
 
-loadCards();
-
 function loadCards() {
+    showSpinner();
     return fetch(`https://picsum.photos/v2/list?page=${currentPage}&limit=${LIMIT}`)
         .then(response => {
             currentPage++;
@@ -133,8 +132,6 @@ function isInViewport(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
-
-let loading = false;
 
 window.addEventListener('scroll', () => {
     setTimeout(() => {
