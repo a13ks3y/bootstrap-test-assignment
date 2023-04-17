@@ -20,7 +20,8 @@ html, body {
 }
 
 .navbar-brand {
-    font-size: 12px;
+    font-size: 24px;
+    padding-left: 1rem;
 }
 .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link, .nav-link {
     font-size: 12px;
@@ -37,6 +38,7 @@ html, body {
 .filter {
     list-style: none;
     display: flex;
+    padding-left: 1rem;
 }
 .filter li button {
     width: 273px;
@@ -147,8 +149,6 @@ label>input {
     border: 1px solid #EBEBEB;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    width: 356px;
-    min-width: calc(360px + 2rem);
 }
 .card img {
     /*border-top-left-radius: 8px;*/
@@ -177,6 +177,7 @@ label>input {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 2rem;
+    padding-left: 1rem;
 }
 .card-text {
     overflow: hidden;
@@ -187,8 +188,12 @@ label>input {
     text-overflow: ellipsis;
 }
 .photos-container .card img {
-    max-width: 200px;
+    /*max-width: 200px;*/
     max-height: none;
+}
+header.container, main.container {
+    padding: 0; margin: 0;
+    max-width: 300px;
 }
 @media (min-width: 666px) {
     .photos-container {
@@ -198,10 +203,14 @@ label>input {
         flex-direction: column;
     }
     header.container, main.container {
-        width: 1600px; /* @todo: ??? */
+        width: 1000px; /* @todo: ??? */
+        max-width: none;
     }
     .photos-container .card img {
         max-width: 382px;
         max-height: 200px;
+    }
+    .navbar-brand {
+        font-size: 12px;
     }
 }

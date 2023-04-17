@@ -4,6 +4,14 @@ const photosContainerEl = document.querySelector('.photos-container');
 // Switch dark/light mode and store it.
 const STORAGE_KEY = 'theme-mode';
 const DEFAULT_MODE = 'light';
+
+main();
+
+function main() {
+    const currentMode = loadCurrentMode();
+    if (currentMode !== DEFAULT_MODE) changeMode(currentMode);
+}
+
 function toggleMode() {
     const currentMode = loadCurrentMode();
     const nextMode = currentMode === 'light' ? 'dark' : 'light';
@@ -29,8 +37,6 @@ function changeMode(nextMode) {
 
 }
 
-const currentMode = loadCurrentMode();
-if (currentMode !== DEFAULT_MODE) changeMode(currentMode);
 
 let currentPage = 1;
 const LIMIT = 9;
@@ -129,7 +135,8 @@ function isInViewport(element) {
 }
 
 let loading = false;
-window.onscroll = function () {
+
+window.addEventListener('scroll', () => {
     setTimeout(() => {
         if (lastCardEl) {
             if (isInViewport(lastCardEl) && !loading) {
@@ -138,4 +145,6 @@ window.onscroll = function () {
             }
         }
     }, 0);
+});
+window.onscroll = function () {
 }
