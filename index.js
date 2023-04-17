@@ -43,49 +43,60 @@ function hideSpinner() {
 
 const photosContainerEl = document.querySelector('.photos-container');
 
+function createNode(tagName, attrs, parent = null) {
+    const el = document.createElement(tagName);
+    for (const attrName in attrs) {
+        if (attrName === 'textContent') {
+            el.textContent = attrs[attrName];
+        } else {
+            el.setAttribute(attrName === 'className' ? 'class' : attrName, attrs[attrName]);
+        }
+    }
+    parent && parent.appendChild(el);
+    return el;
+}
+
+const btnToggleMode = document.getElementById('btn-toggle-mode');
+btnToggleMode.addEventListener('click', e => toggleMode());
+
+// @todo: refactor this shit!
 function renderCard(card, cardIndex, cards) {
-    const articleEl = document.createElement('div');
-    articleEl.classList.add('card')
-    articleEl.setAttribute('data-id', card.id);
+    const articleEl = createNode('div', {
+        className: 'card',
+        "data-id": card.id
+    });
 
-    const cardBodyEl = document.createElement('div');
-    cardBodyEl.classList.add('card-body');
+    const cardBodyEl = createNode('div', {className: 'card-body'});
 
-    const imgEl = document.createElement('img');
-    imgEl.src = card["download_url"];
-    imgEl.alt = card["author"];
-    imgEl.classList.add('card-img-top');
-    articleEl.appendChild(imgEl);
+    createNode('img', {
+        src: card["download_url"],
+        alt: card["author"],
+        className: 'card-img-top'
+    }, articleEl);
 
-    const headingEl = document.createElement('h3');
-    headingEl.textContent = card["author"];
-    cardBodyEl.appendChild(headingEl);
-    const pEl = document.createElement('p');
-    pEl.classList.add('card-text');
-    pEl.textContent = Math.random() > 0.5
-        ?'Random Text. Todo: Generate Random Text Using Random Numbers Generator, AKA "random function"length of this text is ridiculous. It could be hundred times shorter. But this is life, unfortunately, there is no way to avoid very long and useless sentences.'
-        :'The Short Description, should fit well';
-    cardBodyEl.appendChild(pEl);
-    if (pEl.textContent.length >= 120) {
+    createNode('h3', {textContent: card["author"]}, cardBodyEl);
+
+    const cardText = Math.random() > 0.5
+        ? 'Random Text. Todo: Generate Random Text Using Random Numbers Generator, AKA "random function"length of this text is ridiculous. It could be hundred times shorter. But this is life, unfortunately, there is no way to avoid very long and useless sentences.'
+        : 'The Short Description, should fit well';
+
+    const pEl = createNode('p', {
+        textContent: cardText,
+        className: 'card-text',
+    }, cardBodyEl)
+    if (cardText.length >= 120) {
         pEl.classList.add('cut-off');
-        const btnShowMoreEl = document.createElement('button');
-        btnShowMoreEl.classList.add('btn', 'btn-link', 'text-decoration-none', 'text-dark');
-        btnShowMoreEl.textContent = 'Show more';
-        cardBodyEl.appendChild(btnShowMoreEl);
+        createNode('button', {
+            className: 'btn btn-link text-decoration-none text-dark',
+            textContent: 'Show more'
+        }, cardBodyEl);
     }
 
-    const btnsContainerEl = document.createElement('div');
-    btnsContainerEl.classList.add('card-btns-container')
-    const btnSaveEl = document.createElement('button');
-    const btnShareEl = document.createElement('button');
-    btnSaveEl.textContent = 'Save to collection';
-    btnShareEl.textContent = 'Share';
-    btnSaveEl.classList.add('btn', 'btn-warning');
-    btnShareEl.classList.add('btn', 'btn-light');
-    btnsContainerEl.appendChild(btnSaveEl);
-    btnsContainerEl.appendChild(btnShareEl);
+
     articleEl.appendChild(cardBodyEl);
-    articleEl.appendChild(btnsContainerEl);
+    const btnsContainerEl = createNode('div', {className: 'card-btns-container'}, articleEl);
+    createNode('button', {className: 'btn btn-warning', textContent: 'Save to collection'}, btnsContainerEl);
+    createNode('button', {className: 'btn btn-light', textContent: 'Share'}, btnsContainerEl);
 
     if (cardIndex === cards.length - 1) {
         lastCardEl = articleEl;
