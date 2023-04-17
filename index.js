@@ -1,20 +1,23 @@
+let lastCardEl = null;
+const photosContainerEl = document.querySelector('.photos-container');
+
+// Switch dark/light mode and store it.
 const STORAGE_KEY = 'theme-mode';
 const DEFAULT_MODE = 'light';
-
 function toggleMode() {
     const currentMode = loadCurrentMode();
     const nextMode = currentMode === 'light' ? 'dark' : 'light';
     changeMode(nextMode);
-}
 
+}
 function loadCurrentMode() {
     return localStorage.getItem(STORAGE_KEY) || "light";
-}
 
+}
 function saveCurrentMode(mode) {
     localStorage.setItem(STORAGE_KEY, mode);
-}
 
+}
 function changeMode(nextMode) {
     const currentMode = nextMode === 'light' ? 'dark' : 'light';
     const elements = document.querySelectorAll(`.bg-${currentMode}`);
@@ -23,9 +26,8 @@ function changeMode(nextMode) {
         element.classList.add(`bg-${nextMode}`);
     }
     saveCurrentMode(nextMode);
-}
 
-let lastCardEl = null;
+}
 
 const currentMode = loadCurrentMode();
 if (currentMode !== DEFAULT_MODE) changeMode(currentMode);
@@ -41,7 +43,6 @@ function hideSpinner() {
     // @todo: implement hideSpinner function
 }
 
-const photosContainerEl = document.querySelector('.photos-container');
 
 function createNode(tagName, attrs, parent = null) {
     const el = document.createElement(tagName);
@@ -59,7 +60,6 @@ function createNode(tagName, attrs, parent = null) {
 const btnToggleMode = document.getElementById('btn-toggle-mode');
 btnToggleMode.addEventListener('click', e => toggleMode());
 
-// @todo: refactor this shit!
 function renderCard(card, cardIndex, cards) {
     const articleEl = createNode('div', {
         className: 'card',

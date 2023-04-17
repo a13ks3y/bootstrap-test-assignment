@@ -139,9 +139,10 @@ label>input {
 }
 
 .card {
-    /* TODO: Dark Mode! */
     background: var(--bs-backdrop-bg);
     border: 1px solid #EBEBEB;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     width: 356px;
     min-width: calc(360px + 2rem);
 }
