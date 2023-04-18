@@ -16,8 +16,14 @@ There is a page layout with a header and a list of picture cards. It should be m
 - implement dark theme
 - make an infinite scroll for cards that takes data from the address https://picsum.photos/v2/list?page=1&limit=9
 
-
 ## What we will pay attention to when checking the task
 correspondence of the layout to the layout
 HTML semantics
 style of JS code
+
+## Road-Map
+* Use global prefix to avoid confusing app class names with bootstrap classes
+* Use BEM (or similar)
+* "Move Up" (scroll to top) feature
+* Pixel-perfect
+
